@@ -14,4 +14,4 @@ app.use(bodyParser.json());
 import userRoutes from "./routes/users"
 app.use("/users",userRoutes);
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
