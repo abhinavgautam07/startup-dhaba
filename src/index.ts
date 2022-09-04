@@ -1,10 +1,14 @@
-import express from "express";
+import express,{Request, Response} from "express";
 import bodyParser from "body-parser";
 import randomstring from "randomstring";
 import {connectToDB} from "./configs/db"
 const app = express();
 connectToDB();
-
+app.use((req:Request,res:Response,next:any)=>{
+    res.header('Access-Control-Allow-Origin','*');
+    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+})
 app.use(bodyParser.urlencoded({
     extended: true
 }));
